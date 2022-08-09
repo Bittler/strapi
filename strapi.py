@@ -2,6 +2,8 @@ from requests import request
 from typing import List
 from uuid import uuid4
 
+import requests
+
 class Strapi:
 
     def __init__(self, url: str = "http://127.0.0.1:1337") -> None:
@@ -37,7 +39,7 @@ class Strapi:
     def update_entity(self, colletion: str, id: str = None, data: dict = {}) -> dict:
         path = f"/{colletion}"
         if (id != None):
-            path += "f/{id}"
+            path += f"/{id}"
         return self.call("PUT", path, data=data)
     
     def upload_image(self, file: object, filename: str = None) -> dict:
